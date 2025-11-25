@@ -31,6 +31,7 @@ class Settings(BaseSettings):
         env_ignore_empty=True,
         extra="ignore",
     )
+
     API_V1_STR: str = "/api/v1"
     SECRET_KEY: str = secrets.token_urlsafe(32)
     FRONTEND_HOST: str = "http://localhost:5173"
@@ -50,8 +51,13 @@ class Settings(BaseSettings):
         return [str(origin).rstrip("/") for origin in self.BACKEND_CORS_ORIGINS] + [
             self.FRONTEND_HOST
         ]
-
+    
     PROJECT_NAME: str
+    ## DB
+    SUPABASE_URL: str
+    SUPABASE_SECRET_KEY: str
+
+  
     SENTRY_DSN: HttpUrl | None = None
     POSTGRES_SERVER: str
     POSTGRES_PORT: int = 5432
